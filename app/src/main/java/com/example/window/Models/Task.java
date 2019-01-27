@@ -9,4 +9,9 @@ public class Task {
     public Boolean isDone;
     public Date creationDate;
     public Date endDate;
+
+    public Task (String title, String description){
+        this.title = title;
+        this.description = description;
+    }
 }
