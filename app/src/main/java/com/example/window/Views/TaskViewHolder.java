@@ -18,7 +18,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder{
         tvDescription = v.findViewById(R.id.vh_task_description);
     }
 
-    public void onBoid (Task task){
+    public void onBind (Task task){
         tvTitle.setText(task.title);
         tvDescription.setText(task.description);
     }
