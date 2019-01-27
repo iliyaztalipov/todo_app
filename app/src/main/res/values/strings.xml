@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Window</string>
+    <string name="default_task_title">Title</string>
+    <string name="default_task_description">Description</string>
 </resources>

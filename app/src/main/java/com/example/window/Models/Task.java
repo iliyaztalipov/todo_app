@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Task {
 
-    String title;
-    String description;
-    Boolean isDone;
-    Date creationDate;
-    Date endDate;
+    public String title;
+    public String description;
+    public Boolean isDone;
+    public Date creationDate;
+    public Date endDate;
 }
