@@ -36,10 +36,9 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
 
     void initTasks(){
         tasks = new ArrayList<>();
-        tasks.add( new Task("Tasks1", "1"));
-        tasks.add( new Task("Tasks2", "2"));
-        tasks.add( new Task("Tasks3", "3"));
-
+        tasks.add( new Task(0,"Tasks1", "первый таск"));
+        tasks.add( new Task(1,"Tasks2", "второй таск"));
+        tasks.add( new Task(2,"Tasks3", "третий таск"));
     }
 
     void initRecycler(){
@@ -52,8 +51,26 @@ public class MainActivity extends AppCompatActivity implements IOnClickListener 
     }
 
     @Override
-    public void onClick() {
+    public void onClick(int taskID) {
+        Task task = null;
+
+        for (int i=0; i< tasks.size(); i++){
+            if (tasks.get(i).id == taskID){
+                task = tasks.get(i);
+                break;
+            } else {
+                Log.d("ololo", "Not found");
+            }
+        }
+
+        if (task == null){
+            return;
+        }
+
         Intent intent = new Intent(this, TaskDetailsActivity.class);
+        intent.putExtra("task_title", task.title);
+        intent.putExtra("task_description", task.description);
+
         startActivity(intent);
     }
 }
