@@ -5,18 +5,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.window.Interfaces.IOnClickListener;
 import com.example.window.Models.Task;
 import com.example.window.R;
 
 public class TaskViewHolder extends RecyclerView.ViewHolder{
     TextView tvTitle;
     TextView tvDescription;
+    IOnClickListener listener;
 
-    public TaskViewHolder (View v){
+    public TaskViewHolder (View v, final IOnClickListener listener){
         super(v);
         tvTitle = v.findViewById(R.id.vh_task_title);
         tvDescription = v.findViewById(R.id.vh_task_description);
+        this.listener = listener;
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick();
+            }
+        });
     }
+
 
     public void onBind (Task task){
         tvTitle.setText(task.title);

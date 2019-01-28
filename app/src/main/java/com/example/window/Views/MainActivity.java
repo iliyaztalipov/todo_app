@@ -1,17 +1,21 @@
-package com.example.window;
+package com.example.window.Views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.window.Adapters.TasksAdapter;
+import com.example.window.Interfaces.IOnClickListener;
 import com.example.window.Models.Task;
+import com.example.window.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IOnClickListener {
 
     RecyclerView mainRecycler;
     TasksAdapter tasksAdapter;
@@ -41,9 +45,15 @@ public class MainActivity extends AppCompatActivity {
     void initRecycler(){
         mainRecycler = findViewById(R.id.main_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        tasksAdapter = new TasksAdapter(tasks);
+        tasksAdapter = new TasksAdapter(tasks, this);
 
         mainRecycler.setLayoutManager(layoutManager);
         mainRecycler.setAdapter(tasksAdapter);
+    }
+
+    @Override
+    public void onClick() {
+        Intent intent = new Intent(this, TaskDetailsActivity.class);
+        startActivity(intent);
     }
 }
